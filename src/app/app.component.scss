@@ -1,0 +1,35 @@
+.page {
+  height: calc(100% - 4em);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    height: 2em;
+    text-align: center;
+  }
+}
+
+section {
+  height: calc(100vh - 13em);
+
+  display: flex;
+  padding: 2em;
+  border: 1px solid black;
+  justify-content: center;
+
+  p {
+    margin-top: calc(100% / 3);
+  }
+}
+
+app-file-viewer {
+  height: calc(100% - 4em);
+  width: calc(100% - 2em);
+  //display: flex;
+  //flex-direction: column;
+  padding: 2em;
+}

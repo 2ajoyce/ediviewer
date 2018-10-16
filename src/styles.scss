@@ -1,0 +1,9 @@
+/* You can add global styles to this ediElements, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.dark {
+  background-color: darken(#fff, 20%);
+}

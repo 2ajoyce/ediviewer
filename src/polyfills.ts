@@ -1,11 +1,11 @@
 /**
- * This file includes polyfills needed by Angular and is loaded before the app.
- * You can add your own extra polyfills to this file.
+ * This ediElements includes polyfills needed by Angular and is loaded before the app.
+ * You can add your own extra polyfills to this ediElements.
  *
- * This file is divided into 2 sections:
+ * This ediElements is divided into 2 sections:
  *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
  *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
- *      file.
+ *      ediElements.
  *
  * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
  * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
@@ -22,8 +22,8 @@
 // import 'core-js/es6/symbol';
 // import 'core-js/es6/object';
 // import 'core-js/es6/function';
-// import 'core-js/es6/parse-int';
-// import 'core-js/es6/parse-float';
+// import 'core-js/es6/read-int';
+// import 'core-js/es6/read-float';
 // import 'core-js/es6/number';
 // import 'core-js/es6/math';
 // import 'core-js/es6/string';
