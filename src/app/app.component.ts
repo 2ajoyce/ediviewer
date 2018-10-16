@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FileParserService} from './services/file-parser.service';
-import {EdiElement} from './models/edi-element';
+import {EdiFile} from './models/edi-file';
 
 @Component({
   selector: 'app-root',
@@ -8,21 +8,21 @@ import {EdiElement} from './models/edi-element';
   template: `
     <div class="page">
       <h1>EDI Viewer</h1>
-      <section *ngIf="!ediElements?.length" appDnd>
+      <section *ngIf="!file" appDnd>
         <p>Drop Your File Here</p>
       </section>
       <app-file-viewer
-        *ngIf="ediElements?.length"
+        *ngIf="file"
         appDnd
-        [ediElements]="ediElements"
+        [file]="file"
       ></app-file-viewer>
     </div>
   `
 })
 export class AppComponent {
-  ediElements: Array<EdiElement>;
+  file: EdiFile;
 
   constructor(private fileParseService: FileParserService) {
-    this.fileParseService.file.subscribe(file => this.ediElements = file);
+    this.fileParseService.file.subscribe(file => this.file = file);
   }
 }
