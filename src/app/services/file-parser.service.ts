@@ -29,16 +29,16 @@ export class FileParserService {
       throw new DOMException('Invalid File');
     }
 
-    const elementDelim: string = lines[0][3];
-    const compositeDelim: string = lines[0].slice(-3, -2);
-    const segmentDelim: string = lines[0].slice(-2, -1);
+    const elementDelimiter: string = lines[0][3];
+    const componentSeparator: string = lines[0].slice(-3, -2);
+    const segmentDelimiter: string = lines[0].slice(-2, -1);
     const ediElements: Array<EdiElement> = [];
 
-    lines = lines.map(line => line.replace(compositeDelim, ''));
-    lines = lines.map(line => line.replace(segmentDelim, ''));
+    lines = lines.map(line => line.replace(componentSeparator, ''));
+    lines = lines.map(line => line.replace(segmentDelimiter, ''));
 
     lines.forEach(line => {
-      const elements: Array<string> = line.split(elementDelim);
+      const elements: Array<string> = line.split(elementDelimiter);
 
       elements.forEach((element, i) => {
         if (i > 0 && element.trim() !== '') {
@@ -54,9 +54,9 @@ export class FileParserService {
     });
 
     return <EdiFile> {
-      elementDelimiter: elementDelim,
-      compositeDelimiter: compositeDelim,
-      segmentDelimiter: segmentDelim,
+      elementDelimiter: elementDelimiter,
+      componentSeparator: componentSeparator,
+      segmentDelimiter: segmentDelimiter,
       elements: ediElements
     };
   }

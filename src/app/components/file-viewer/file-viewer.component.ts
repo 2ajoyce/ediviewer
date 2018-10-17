@@ -6,7 +6,7 @@ import {EdiFile} from '../../models/edi-file';
   styleUrls: ['./file-viewer.component.scss'],
   template: `
     <span class="bold">Element Delimiter:</span> {{ file.elementDelimiter }}<br>
-    <span class="bold">Composite Delimiter:</span> {{ file.compositeDelimiter}}<br>
+    <span class="bold">Component Separator:</span> {{ file.componentSeparator}}<br>
     <span class="bold">Segment Delimiter:</span> {{ file.segmentDelimiter}}<br>
     <div *ngFor="let ediElement of file.elements">
       <span class="bold">
