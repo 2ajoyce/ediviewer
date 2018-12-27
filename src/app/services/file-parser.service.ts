@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {EdiElement} from '../models/edi-element';
 import {EdiFile} from '../models/edi-file';
 
@@ -7,23 +7,20 @@ import {EdiFile} from '../models/edi-file';
   providedIn: 'root'
 })
 export class FileParserService {
-  file: BehaviorSubject<EdiFile> = new BehaviorSubject(null);
-
-  constructor() {
-  }
-
-  read(file: File): void {
+  read(file: File): Observable<EdiFile> {
     const fileReader: FileReader = new FileReader();
+    const ediFile: BehaviorSubject<EdiFile> = new BehaviorSubject(null);
 
     fileReader.onload = (e) => {
       const fileContents = fileReader.result;
-      this.file.next(this.parse(fileContents));
+      ediFile.next(this.parse(fileContents));
     };
 
     fileReader.readAsText(file);
+    return ediFile;
   }
 
-  parse(fileContents: string): EdiFile {
+  private parse(fileContents: string): EdiFile {
     let lines: Array<string> = fileContents.split('\n');
     if (lines[0].slice(0, 3) !== 'ISA') {
       throw new DOMException('Invalid File');

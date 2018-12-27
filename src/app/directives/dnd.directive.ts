@@ -1,5 +1,8 @@
 import {Directive, HostBinding, HostListener} from '@angular/core';
 import {FileParserService} from '../services/file-parser.service';
+import {EdiFile} from '../models/edi-file';
+import {Store} from '@ngrx/store';
+import {Drop} from '../file.actions';
 
 @Directive({
   selector: '[appDnd]'
@@ -7,7 +10,14 @@ import {FileParserService} from '../services/file-parser.service';
 export class DndDirective {
   dragover: boolean = false;
 
-  constructor(private fileParser: FileParserService) {
+  constructor(
+    private fileParser: FileParserService,
+    private store: Store<{ file: EdiFile }>) {
+  }
+
+  @HostBinding('class')
+  get elementClass(): string {
+    return this.dragover ? 'dark' : '';
   }
 
   static removeDragData(evt) {
@@ -16,11 +26,6 @@ export class DndDirective {
     } else {
       evt.dataTransfer.clearData();
     }
-  }
-
-  @HostBinding('class')
-  get elementClass(): string {
-    return this.dragover ? 'dark' : '';
   }
 
   @HostListener('dragover', ['$event']) onDragOver(evt) {
@@ -45,7 +50,9 @@ export class DndDirective {
     if (evt.dataTransfer.items) {
       if (evt.dataTransfer.items[0].kind === 'file') {
         const file = evt.dataTransfer.items[0].getAsFile();
-        this.fileParser.read(file);
+        this.fileParser.read(file).subscribe((ediFile: EdiFile) => {
+          this.store.dispatch(new Drop(ediFile));
+        });
       }
     }
 

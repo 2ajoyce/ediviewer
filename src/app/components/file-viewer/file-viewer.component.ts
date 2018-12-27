@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {EdiFile} from '../../models/edi-file';
 
 @Component({
@@ -16,13 +16,6 @@ import {EdiFile} from '../../models/edi-file';
     </div>
   `
 })
-export class FileViewerComponent implements OnInit {
+export class FileViewerComponent {
   @Input() file: EdiFile;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
 }
