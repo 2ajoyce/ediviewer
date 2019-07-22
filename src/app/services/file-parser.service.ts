@@ -12,7 +12,7 @@ export class FileParserService {
     const ediFile: BehaviorSubject<EdiFile> = new BehaviorSubject(null);
 
     fileReader.onload = (e) => {
-      const fileContents = fileReader.result;
+      const fileContents = fileReader.result.toString();
       ediFile.next(this.parse(fileContents));
     };
 
