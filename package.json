@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-prod": "ng build --configuration production --base-href \"https://2ajoyce.github.io/ediviewer/\"",
+    "deploy-prod":"ng deploy --base-href \"https://2ajoyce.github.io/ediviewer/\"",
+    "onetime-setup-gh-pages":"ng add angular-cli-ghpages",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
