@@ -6,36 +6,76 @@ This is an Angular application for viewing and parsing EDI (Electronic Data Inte
 
 ## Technology Stack
 
-- **Framework**: Angular 13
-- **State Management**: NgRx Store
-- **Language**: TypeScript 4.5.4
+- **Framework**: Angular 20
+- **State Management**: Signals (built-in Angular feature)
+- **Language**: TypeScript (latest version)
 - **Styling**: SCSS
 - **Testing**: Jasmine and Karma
-- **E2E Testing**: Protractor
-- **Linting**: TSLint
+- **Linting**: ESLint
 
 ## Code Style Guidelines
 
-### TypeScript
+### TypeScript Best Practices
 
-- Use single quotes for strings (enforced by TSLint)
-- Always use semicolons (enforced by TSLint)
+- Use strict type checking
+- Prefer type inference when the type is obvious
+- Avoid the `any` type; use `unknown` when type is uncertain
+- Use single quotes for strings
+- Always use semicolons
 - Maximum line length: 140 characters
 - Use spaces for indentation (not tabs)
 - Prefer `const` over `let` when variables are not reassigned
 - No usage of `var` keyword
 - Use arrow functions where appropriate
-- Follow member ordering: static fields, instance fields, static methods, instance methods
 
-### Angular Specific
+### Angular Best Practices
 
+- **Always use standalone components** (no NgModules)
+- **Use signals for state management** instead of NgRx or services with BehaviorSubject
+- Implement lazy loading for feature routes
+- Avoid using `@HostBinding` and `@HostListener` decorators; use the `host` object within the `@Component` or `@Directive` decorator instead
+- Use `NgOptimizedImage` for all static images
+- Set `changeDetection: ChangeDetectionStrategy.OnPush` in the `@Component` decorator
+- Use the `inject()` function instead of constructor injection
+- Prefer inline templates for small components
+
+### Component Design
+
+- Keep components small and focused on a single responsibility
 - Component class names must have the `Component` suffix
-- Directive class names must have the `Directive` suffix
+- Use `input()` and `output()` functions instead of `@Input()` and `@Output()` decorators
 - Use the `app` prefix for all custom components and directives
 - Use lifecycle interfaces (e.g., `implements OnInit`)
+
+### Directives
+
+- Directive class names must have the `Directive` suffix
+- Use the `host` object in the `@Directive` decorator instead of `@HostBinding` and `@HostListener`
+
+### Pipes
+
 - Use pipe transform interface for custom pipes
-- Use Angular's `@Input()` and `@Output()` decorators properly
-- No renaming of `@Input()` or `@Output()` properties
+- Pipes should be standalone
+
+### State Management with Signals
+
+- Use signals for local component state
+- Keep state transformations pure and predictable
+- Do not use `mutate` on signals; use `update` or `set` instead
+- Signals replace the need for NgRx Store in most cases
+
+### Service Design
+
+- Design services around a single responsibility
+- Use the `providedIn: 'root'` option for singleton services
+- Use the `inject()` function instead of constructor injection
+
+### Template Best Practices
+
+- Keep templates simple and avoid complex logic
+- Use native control flow (`@if`, `@for`, `@switch`) instead of structural directives like `*ngIf`, `*ngFor`, `*ngSwitch`
+- Use the async pipe to handle observables when needed
+- Prefer signal-based reactivity over observables for local state
 
 ### Console Usage
 
@@ -64,8 +104,7 @@ This is an Angular application for viewing and parsing EDI (Electronic Data Inte
 ### Test Configuration
 
 - Karma is configured in `src/karma.conf.js`
-- E2E tests use Protractor (configured in `e2e/protractor.conf.js`)
-- E2E test files should have `.e2e-spec.ts` extension
+- Test files should have `.spec.ts` extension
 
 ## Build and Deployment
 
@@ -82,10 +121,12 @@ This is an Angular application for viewing and parsing EDI (Electronic Data Inte
 
 ## State Management
 
-- Use NgRx Store for state management
-- Actions should be defined in `*.actions.ts` files
-- Reducers should be defined in `*.reducer.ts` files
-- The main store is configured in `app.module.ts` with `StoreModule.forRoot()`
+- Use signals for state management (built-in Angular feature)
+- Signals replace the traditional need for NgRx Store or services with BehaviorSubject
+- Keep state transformations pure and predictable
+- Use `signal()` to create writable signals
+- Use `computed()` for derived state
+- Use `effect()` for side effects based on signal changes
 
 ## EDI File Parsing
 
@@ -100,9 +141,8 @@ When working with EDI file parsing functionality:
 ## Linting
 
 - Run linter: `ng lint`
-- TSLint configuration is in `tslint.json` at the root level
+- ESLint configuration should follow Angular best practices
 - Fix linting issues before committing code
-- Follow the Codelyzer rules for Angular-specific linting
 
 ## Import Guidelines
 
