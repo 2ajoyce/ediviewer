@@ -1,12 +1,16 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideStore } from '@ngrx/store';
+import { AppComponent } from './app/app.component';
+import { fileReducer } from './app/file.reducer';
 import { environment } from './environments/environment';
+import { enableProdMode } from '@angular/core';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideStore({ file: fileReducer })
+  ]
+}).catch(err => console.error(err));

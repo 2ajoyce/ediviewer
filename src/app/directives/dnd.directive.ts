@@ -1,58 +1,61 @@
-import {Directive, HostBinding, HostListener} from '@angular/core';
-import {FileParserService} from '../services/file-parser.service';
-import {EdiFile} from '../models/edi-file';
-import {Store} from '@ngrx/store';
-import {Drop} from '../file.actions';
+import { Directive, signal } from '@angular/core';
+import { FileParserService } from '../services/file-parser.service';
+import { EdiFile } from '../models/edi-file';
+import { Store } from '@ngrx/store';
+import { Drop } from '../file.actions';
 
 @Directive({
-  selector: '[appDnd]'
+  selector: '[appDnd]',
+  host: {
+    '[class.dark]': 'dragover()',
+    '(dragover)': 'onDragOver($event)',
+    '(dragleave)': 'onDragLeave($event)',
+    '(drop)': 'onDrop($event)'
+  }
 })
 export class DndDirective {
-  dragover: boolean = false;
+  dragover = signal(false);
 
   constructor(
     private fileParser: FileParserService,
-    private store: Store<{ file: EdiFile }>) {
+    private store: Store<{ file: EdiFile | null }>) {
   }
 
-  @HostBinding('class')
-  get elementClass(): string {
-    return this.dragover ? 'dark' : '';
-  }
-
-  static removeDragData(evt) {
-    if (evt.dataTransfer.items) {
+  static removeDragData(evt: DragEvent): void {
+    if (evt.dataTransfer?.items) {
       evt.dataTransfer.items.clear();
-    } else {
+    } else if (evt.dataTransfer) {
       evt.dataTransfer.clearData();
     }
   }
 
-  @HostListener('dragover', ['$event']) onDragOver(evt) {
+  onDragOver(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
-    this.dragover = true;
+    this.dragover.set(true);
   }
 
-  @HostListener('dragleave', ['$event'])
-  public onDragLeave(evt) {
+  onDragLeave(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
-    this.dragover = false;
+    this.dragover.set(false);
   }
 
-  @HostListener('drop', ['$event'])
-  public onDrop(evt) {
+  onDrop(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
-    this.dragover = false;
+    this.dragover.set(false);
 
-    if (evt.dataTransfer.items) {
+    if (evt.dataTransfer?.items) {
       if (evt.dataTransfer.items[0].kind === 'file') {
         const file = evt.dataTransfer.items[0].getAsFile();
-        this.fileParser.read(file).subscribe((ediFile: EdiFile) => {
-          this.store.dispatch(new Drop(ediFile));
-        });
+        if (file) {
+          this.fileParser.read(file).subscribe((ediFile: EdiFile | null) => {
+            if (ediFile) {
+              this.store.dispatch(new Drop(ediFile));
+            }
+          });
+        }
       }
     }
 
