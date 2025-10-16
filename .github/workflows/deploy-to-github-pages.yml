@@ -28,7 +28,12 @@ jobs:
       
       - name: Build Angular app
         run: npm run build-prod
-      
+
+      - name: Set up git identity for Pages commit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Deploy to GitHub Pages
         run: npm run deploy-prod
         env:
