@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'pad'
@@ -6,11 +6,12 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class PadPipe implements PipeTransform {
 
   transform(value: string, arg: number): string {
-    while (value.length < arg) {
-      value = '0' + value;
+    let result = value;
+    while (result.length < arg) {
+      result = '0' + result;
     }
 
-    return value;
+    return result;
   }
 
 }

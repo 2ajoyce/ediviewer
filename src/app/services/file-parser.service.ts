@@ -1,19 +1,21 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {EdiElement} from '../models/edi-element';
-import {EdiFile} from '../models/edi-file';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { EdiElement } from '../models/edi-element';
+import { EdiFile } from '../models/edi-file';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileParserService {
-  read(file: File): Observable<EdiFile> {
+  read(file: File): Observable<EdiFile | null> {
     const fileReader: FileReader = new FileReader();
-    const ediFile: BehaviorSubject<EdiFile> = new BehaviorSubject(null);
+    const ediFile: BehaviorSubject<EdiFile | null> = new BehaviorSubject<EdiFile | null>(null);
 
     fileReader.onload = (e) => {
-      const fileContents = fileReader.result.toString();
-      ediFile.next(this.parse(fileContents));
+      const result = fileReader.result;
+      if (result && typeof result === 'string') {
+        ediFile.next(this.parse(result));
+      }
     };
 
     fileReader.readAsText(file);
@@ -50,7 +52,7 @@ export class FileParserService {
       });
     });
 
-    return <EdiFile> {
+    return {
       elementDelimiter: elementDelimiter,
       componentSeparator: componentSeparator,
       segmentDelimiter: segmentDelimiter,

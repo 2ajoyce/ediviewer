@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'sass:color';
+
 html, body {
   margin: 0;
   padding: 0;
 }
 
 .dark {
-  background-color: darken(#fff, 20%);
+  background-color: color.scale(#fff, $lightness: -20%);
 }
 
 .bold {
