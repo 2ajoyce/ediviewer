@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "onetime_setup-gh-pages":"ng add angular-cli-ghpages",
+    "onetime_setup-gh-pages": "ng add angular-cli-ghpages",
     "seems_redundant-build-prod": "ng build --configuration production --base-href \"https://2ajoyce.github.io/ediviewer/\"",
-    "authorize_ssh_key_before_deploying":"ssh-add %userprofile%/.ssh/id_rsa",
-    "deploy-prod":"ng deploy --base-href=/ediviewer/"
+    "authorize_ssh_key_before_deploying": "ssh-add %userprofile%/.ssh/id_rsa",
+    "deploy-prod": "ng deploy --base-href=/ediviewer/"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +27,7 @@
     "zone.js": "^0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.1.0",
+    "@angular-devkit/build-angular": "~13.1.3",
     "@angular/cli": "^13.1.3",
     "@angular/compiler-cli": "^13.1.2",
     "@angular/language-service": "^13.1.2",
