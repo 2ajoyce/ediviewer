@@ -27,9 +27,9 @@ jobs:
         run: npm install --legacy-peer-deps
       
       - name: Build Angular app
-        run: npm build-prod
+        run: npm run build-prod
       
       - name: Deploy to GitHub Pages
-        run: npm deploy-prod
+        run: npm run deploy-prod
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
