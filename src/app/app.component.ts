@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EdiFile } from './models/edi-file';
 import { Store } from '@ngrx/store';
@@ -27,9 +27,10 @@ import { FileViewerComponent } from './components/file-viewer/file-viewer.compon
   `
 })
 export class AppComponent {
+  private readonly store = inject(Store<{ file: EdiFile | null }>);
   file = signal<EdiFile | null>(null);
 
-  constructor(private store: Store<{ file: EdiFile | null }>) {
-    store.select('file').subscribe((file: EdiFile | null) => this.file.set(file));
+  constructor() {
+    this.store.select('file').subscribe((file: EdiFile | null) => this.file.set(file));
   }
 }

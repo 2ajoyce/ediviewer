@@ -1,4 +1,4 @@
-import { Directive, signal } from '@angular/core';
+import { Directive, signal, inject } from '@angular/core';
 import { FileParserService } from '../services/file-parser.service';
 import { EdiFile } from '../models/edi-file';
 import { Store } from '@ngrx/store';
@@ -14,12 +14,10 @@ import { Drop } from '../file.actions';
   }
 })
 export class DndDirective {
+  private readonly fileParser = inject(FileParserService);
+  private readonly store = inject(Store<{ file: EdiFile | null }>);
+  
   dragover = signal(false);
-
-  constructor(
-    private fileParser: FileParserService,
-    private store: Store<{ file: EdiFile | null }>) {
-  }
 
   static removeDragData(evt: DragEvent): void {
     if (evt.dataTransfer?.items) {
