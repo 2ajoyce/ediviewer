@@ -6,10 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "onetime_setup-gh-pages":"ng add angular-cli-ghpages",
+    "onetime_setup-gh-pages": "ng add angular-cli-ghpages",
     "seems_redundant-build-prod": "ng build --configuration production --base-href \"https://2ajoyce.github.io/ediviewer/\"",
-    "authorize_ssh_key_before_deploying":"ssh-add %userprofile%/.ssh/id_rsa",
-    "deploy-prod":"ng deploy --base-href=/ediviewer/"
+    "authorize_ssh_key_before_deploying": "ssh-add %userprofile%/.ssh/id_rsa",
+    "deploy-prod": "ng deploy --base-href=/ediviewer/"
   },
   "private": true,
   "dependencies": {
