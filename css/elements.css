@@ -1,0 +1,89 @@
+/*
+ * Trimmed subset of https://github.com/2ajoyce/css-base/blob/main/css-base/elements.css
+ * — only the tags/selectors this page actually uses.
+ */
+html {
+  background-color: var(--background-color);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 1rem;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-width: 20rem;
+}
+
+h1 {
+  margin: 1.5rem 0 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+strong {
+  font-weight: bold;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  background-color: var(--inline-code-background-color);
+  color: var(--inline-code-text-color);
+  padding: 2px 6px;
+  border-radius: 0.25rem;
+  font-size: 0.95em;
+  white-space: nowrap;
+  border: 1px solid var(--inline-code-border-color);
+}
+
+small {
+  font-size: smaller;
+}
+
+/* Toggle Switch */
+input[type="checkbox"].toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 3rem;
+  height: 1.5rem;
+  padding: 0;
+  background-color: var(--secondary-color);
+  border-radius: 1.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  border: 1px solid var(--secondary-color);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"].toggle::before {
+  content: "";
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  top: 50%;
+  left: 0.125rem;
+  transform: translateY(-50%);
+  background-color: var(--secondary-background-color);
+  transition: transform 0.3s;
+}
+
+input[type="checkbox"].toggle:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+input[type="checkbox"].toggle:checked::before {
+  transform: translateY(-50%) translateX(1.5rem);
+}
+
+input[type="checkbox"].toggle:focus {
+  box-shadow: 0 0 5px var(--primary-color);
+  outline: none;
+}

@@ -1,0 +1,88 @@
+/*
+ * App-specific styles. Nothing here is copied from css-base — these are either
+ * layout tweaks made by overriding css-base's own customization variables
+ * (.page, .toolbar) or genuinely new rules for things css-base has no
+ * equivalent for (drop zone, EDI summary/segment/element display).
+ */
+
+/* Reuses css-base's .container (layout.css) via its customization vars
+   instead of duplicating max-width/margin/padding. */
+.page {
+  --container-max-width: 60rem;
+  --container-padding: 0 1.5rem 3rem;
+}
+
+/* Reuses css-base's .group (layout.css) via its customization var instead of
+   duplicating display/flex-wrap/gap. */
+.toolbar {
+  --group-gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* No css-base equivalent for a flex spacer utility. */
+.toolbar .spacer {
+  flex: 1;
+}
+
+/* No css-base equivalent for a file drop target. */
+.drop-zone {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border: 2px dashed var(--secondary-color);
+  border-radius: 5px;
+  background-color: var(--secondary-background-color);
+}
+
+/* In dark mode --secondary-background-color is too close to the page
+   background for the drop zone to read as a distinct target. */
+.drop-zone.dark {
+  background-color: color-mix(in srgb, var(--secondary-background-color) 80%, black);
+}
+
+.drop-zone p {
+  margin: 0;
+}
+
+/* No css-base equivalent for a labeled toggle-switch wrapper. */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* EDI file summary display — domain-specific, no css-base equivalent. */
+.summary {
+  padding: 1rem 0;
+  border-top: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.summary div {
+  padding: 0.15rem 0;
+}
+
+.summary small {
+  display: inline-block;
+  min-width: 11.5em;
+}
+
+/* EDI segment groups — domain-specific, no css-base equivalent. */
+.segment-group {
+  padding: 0.5rem 0;
+}
+
+.segment-group + .segment-group {
+  border-top: 1px solid var(--secondary-color);
+}
+
+.element-row {
+  padding: 0.15rem 0;
+}
+
+/* Segment data can be long free-text (e.g. MSG segments); let it wrap
+   instead of forcing the css-base default of nowrap. */
+.element-row code {
+  white-space: normal;
+  word-break: break-word;
+}

@@ -1,0 +1,43 @@
+/*
+ * Trimmed subset of https://github.com/2ajoyce/css-base/blob/main/css-base/components.css
+ * — only the .toast.danger styling this page actually uses.
+ * Requires src/toast.js for functionality (showing/hiding).
+ */
+
+/* Toasts inherit their base structure from css-base's .alert; only the
+   danger variant is used here, so that's the only color reproduced. */
+.toast {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  box-shadow:
+    2px 4px 6px rgba(0, 0, 0, 0.08),
+    2px 3px 4px rgba(0, 0, 0, 0.12),
+    1px 2px 2px rgba(0, 0, 0, 0.24);
+
+  /* Initially hidden */
+  display: none;
+}
+
+.toast.show {
+  display: flex;
+  animation: toast-in 0.3s ease-out;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast.danger {
+  background-color: var(--danger-bg-subtle);
+  color: var(--danger-text-subtle);
+  border-color: var(--danger-border-subtle);
+}

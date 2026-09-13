@@ -1,0 +1,107 @@
+/*
+ * Trimmed subset of https://github.com/2ajoyce/css-base/blob/main/css-base/themes.css
+ * — only the design tokens this page actually uses.
+ */
+:root {
+  --light-background-color: #f4f4f4;
+  --light-secondary-background-color: #ffffff;
+  --light-text-color: #333;
+  --light-primary-color: #007bff;
+  --light-primary-color-hover: #0056b3;
+  --light-primary-color-active: #004085;
+  --light-primary-color-focus: #80bdff;
+  --light-primary-text-color: #f4f4f4;
+  --light-secondary-color: #d0d0d0;
+  --light-secondary-color-hover: #b8b8b8;
+  --light-secondary-color-active: #a0a0a0;
+  --light-secondary-color-focus: #888888;
+  --light-inline-code-background-color: #e8ecf1;
+  --light-inline-code-text-color: #1a3a5c;
+  --light-inline-code-border-color: #c5d0dc;
+  --light-danger-bg-subtle: #ffebee;
+  --light-danger-text-subtle: #b71c1c;
+  --light-danger-border-subtle: #ffcdd2;
+
+  --dark-background-color: #333;
+  --dark-secondary-background-color: #222222;
+  --dark-text-color: #f4f4f4;
+  --dark-primary-color: #1e90ff;
+  --dark-primary-color-hover: #1c86ee;
+  --dark-primary-color-active: #1874cd;
+  --dark-primary-color-focus: #63b8ff;
+  --dark-primary-text-color: #f4f4f4;
+  --dark-secondary-color: #444;
+  --dark-secondary-color-hover: #555;
+  --dark-secondary-color-active: #666;
+  --dark-secondary-color-focus: #777;
+  --dark-inline-code-background-color: #282c34;
+  --dark-inline-code-text-color: #61dafb;
+  --dark-inline-code-border-color: #3d5a68;
+  --dark-danger-bg-subtle: #330000;
+  --dark-danger-text-subtle: #f8d7da;
+  --dark-danger-border-subtle: #4d0000;
+
+  --background-color: var(--light-background-color);
+  --secondary-background-color: var(--light-secondary-background-color);
+  --text-color: var(--light-text-color);
+  --primary-color: var(--light-primary-color);
+  --primary-color-hover: var(--light-primary-color-hover);
+  --primary-color-active: var(--light-primary-color-active);
+  --primary-color-focus: var(--light-primary-color-focus);
+  --primary-text-color: var(--light-primary-text-color);
+  --secondary-color: var(--light-secondary-color);
+  --secondary-color-hover: var(--light-secondary-color-hover);
+  --secondary-color-active: var(--light-secondary-color-active);
+  --secondary-color-focus: var(--light-secondary-color-focus);
+  --inline-code-background-color: var(--light-inline-code-background-color);
+  --inline-code-text-color: var(--light-inline-code-text-color);
+  --inline-code-border-color: var(--light-inline-code-border-color);
+  --danger-bg-subtle: var(--light-danger-bg-subtle);
+  --danger-text-subtle: var(--light-danger-text-subtle);
+  --danger-border-subtle: var(--light-danger-border-subtle);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background-color: var(--dark-background-color);
+    --secondary-background-color: var(--dark-secondary-background-color);
+    --text-color: var(--dark-text-color);
+    --primary-color: var(--dark-primary-color);
+    --primary-color-hover: var(--dark-primary-color-hover);
+    --primary-color-active: var(--dark-primary-color-active);
+    --primary-color-focus: var(--dark-primary-color-focus);
+    --primary-text-color: var(--dark-primary-text-color);
+    --secondary-color: var(--dark-secondary-color);
+    --secondary-color-hover: var(--dark-secondary-color-hover);
+    --secondary-color-active: var(--dark-secondary-color-active);
+    --secondary-color-focus: var(--dark-secondary-color-focus);
+    --inline-code-background-color: var(--dark-inline-code-background-color);
+    --inline-code-text-color: var(--dark-inline-code-text-color);
+    --inline-code-border-color: var(--dark-inline-code-border-color);
+    --danger-bg-subtle: var(--dark-danger-bg-subtle);
+    --danger-text-subtle: var(--dark-danger-text-subtle);
+    --danger-border-subtle: var(--dark-danger-border-subtle);
+  }
+}
+
+/* Explicit user choice (persisted in localStorage) wins over system preference either way. */
+:root[data-theme="dark"] {
+  --background-color: var(--dark-background-color);
+  --secondary-background-color: var(--dark-secondary-background-color);
+  --text-color: var(--dark-text-color);
+  --primary-color: var(--dark-primary-color);
+  --primary-color-hover: var(--dark-primary-color-hover);
+  --primary-color-active: var(--dark-primary-color-active);
+  --primary-color-focus: var(--dark-primary-color-focus);
+  --primary-text-color: var(--dark-primary-text-color);
+  --secondary-color: var(--dark-secondary-color);
+  --secondary-color-hover: var(--dark-secondary-color-hover);
+  --secondary-color-active: var(--dark-secondary-color-active);
+  --secondary-color-focus: var(--dark-secondary-color-focus);
+  --inline-code-background-color: var(--dark-inline-code-background-color);
+  --inline-code-text-color: var(--dark-inline-code-text-color);
+  --inline-code-border-color: var(--dark-inline-code-border-color);
+  --danger-bg-subtle: var(--dark-danger-bg-subtle);
+  --danger-text-subtle: var(--dark-danger-text-subtle);
+  --danger-border-subtle: var(--dark-danger-border-subtle);
+}

@@ -1,0 +1,81 @@
+/*
+ * Trimmed subset of https://github.com/2ajoyce/css-base/blob/main/css-base/buttons.css
+ * — only the variants this page actually uses.
+ */
+button {
+  padding: 0.75em 1em;
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  border: none;
+  border-radius: 3px;
+  box-shadow:
+    2px 4px 6px rgba(0, 0, 0, 0.08),
+    2px 3px 4px rgba(0, 0, 0, 0.12),
+    1px 2px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
+  font-size: 1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+button:active {
+  background-color: var(--primary-color-active);
+  transform: translate(1px, 2px);
+  box-shadow: none;
+}
+
+button:focus {
+  outline: 2px solid var(--primary-color-focus);
+}
+
+/* Disabled buttons should not move or change color when clicked */
+button:disabled:hover,
+button:disabled:active {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  transform: none;
+  box-shadow:
+    2px 4px 6px rgba(0, 0, 0, 0.08),
+    2px 3px 4px rgba(0, 0, 0, 0.12),
+    1px 2px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Secondary button */
+button.secondary {
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color, var(--text-color));
+}
+
+button.secondary:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+button.secondary:active {
+  background-color: var(--secondary-color-active);
+}
+
+button.secondary:focus {
+  outline: 2px solid var(--secondary-color-focus);
+}
+
+/* Disabled secondary buttons should not move or change color when clicked */
+button.secondary:disabled:hover,
+button.secondary:disabled:active {
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color, var(--text-color));
+}
