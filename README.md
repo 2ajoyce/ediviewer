@@ -40,4 +40,4 @@ npm run test:e2e  # Playwright end-to-end tests
 
 ### Deployment
 
-The project is configured with GitHub Actions to automatically deploy the static files to GitHub Pages when changes are pushed to the `master` branch. The workflow can also be triggered manually from the Actions tab in GitHub.
+The project is configured with GitHub Actions to automatically deploy the static files to GitHub Pages when changes are pushed to the `main` branch. The workflow can also be triggered manually from the Actions tab in GitHub.
