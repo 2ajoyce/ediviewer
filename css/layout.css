@@ -1,0 +1,18 @@
+/*
+ * Trimmed subset of https://github.com/2ajoyce/css-base/blob/main/css-base/layout.css
+ * — only the layout primitives this page actually uses.
+ */
+
+/* Container (Centered content. vars: --container-max-width, --container-padding) */
+.container {
+  max-width: var(--container-max-width, 1200px);
+  margin: 0 auto;
+  padding: var(--container-padding, 1rem);
+}
+
+/* Group (Flex wrap. vars: --group-gap) */
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--group-gap, 1rem);
+}

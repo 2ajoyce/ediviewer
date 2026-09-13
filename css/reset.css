@@ -1,0 +1,23 @@
+/*
+ * Trimmed subset of https://github.com/2ajoyce/css-base/blob/main/css-base/reset.css
+ * — only the selectors this page actually uses.
+ */
+html,
+body,
+div,
+h1,
+p,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

@@ -1,14 +1,40 @@
 <!doctype html>
-<html lang="en" data-beasties-container>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Edi</title>
-  <base href="/ediviewer/">
-
+  <title>EDI Viewer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-<style>html,body{margin:0;padding:0}</style><link rel="stylesheet" href="styles-2HOZXM3A.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-2HOZXM3A.css"></noscript></head>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/elements.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
 <body>
-  <app-root></app-root>
-<script src="polyfills-5CFQRCPP.js" type="module"></script><script src="main-U3JPPTXJ.js" type="module"></script></body>
+  <div class="page container">
+    <h1>EDI Viewer</h1>
+    <div class="toolbar group">
+      <button id="load-sample" type="button">Load Sample Data</button>
+      <button id="clear" type="button" class="secondary" disabled>Clear</button>
+      <span class="spacer"></span>
+      <label class="theme-toggle">
+        <input type="checkbox" id="theme-toggle" class="toggle">
+        Dark Mode
+      </label>
+    </div>
+    <div id="file-error-toast" class="toast danger" role="alert">
+      <span id="file-error-message"></span>
+    </div>
+    <section id="drop-zone" class="drop-zone">
+      <p>Drop Your File Here</p>
+    </section>
+    <div id="results" hidden>
+      <div id="file-viewer"></div>
+    </div>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
 </html>
